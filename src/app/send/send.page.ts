@@ -1,11 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
-import {ContactService} from '../contact.service';
-import {CustomerService} from '../box.service';
-import {SendRequestService} from '../send-request.service';
-import {Box} from '../backend';
-import {Contact} from '../backend';
-import {SendRequest} from '../backend';
 import { UUID } from 'angular2-uuid';
 import * as moment from 'moment';
 
@@ -18,26 +12,11 @@ import * as moment from 'moment';
 export class SendPage implements OnInit {
 
     @Input() id: string;
-    contact: Contact = null;
-    selected: Box = null;
-    boxes: Box[] = [];
-    size = 'S';
-    deliveryDate: string;
 
-    constructor(private modalCtrl: ModalController, private contactService: ContactService,
-                private boxService: CustomerService, private sendRequestService: SendRequestService) {
+    constructor(private modalCtrl: ModalController) {
     }
 
     ngOnInit() {
-        this.contactService.getOne(this.id)
-            .then((c) => this.contact = c)
-            .then((c) =>
-                Promise.all(c.favorite_boxes.map(id => this.boxService.getId(id)))
-                    .then(boxes => {
-                        this.boxes = boxes;
-                        this.selected = boxes[0];
-                    })
-            );
     }
 
     close() {
@@ -45,15 +24,6 @@ export class SendPage implements OnInit {
     }
 
     submit() {
-        // Send to backend...
-        const request: SendRequest = {
-            id: UUID.UUID().toString(),
-            sender: 'bdd2ddf2-3b93-4c0c-b3eb-da16a389c64b',
-            receiver: this.contact.id,
-            box: this.selected.id,            size: this.size,
-            dropoffDate: moment(this.deliveryDate).format('YYYY-MM-DD')
-        }; // new SendRequest(this.contact, this.selected, this.size, this.deliveryDate);
-        this.sendRequestService.save(request);
         this.modalCtrl.dismiss({message: 'Successfully submitted!', duration: 2000, color: 'success'});
     }
 }

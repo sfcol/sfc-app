@@ -4,7 +4,6 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
-import { SendRequestService } from './send-request.service';
 
 declare var universalLinks: any;
 @Component({
@@ -16,33 +15,9 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Contacts',
-      url: '/contacts',
+      title: 'Customers',
+      url: '/customers',
       icon: 'person',
-      count: 0
-    },
-    {
-      title: 'Boxes',
-      url: '/boxes',
-      icon: 'cube',
-      count: 0
-    },
-    {
-      title: 'Sent Requests',
-      url: '/sent',
-      icon: 'send',
-      count: 0
-    },
-    {
-      title: 'Confirmations',
-      url: '/confirmations',
-      icon: 'mail-unread',
-      count: 0
-    },
-    {
-      title: 'Account',
-      url: '/login',
-      icon: 'person-circle',
       count: 0
     }
   ];
@@ -51,7 +26,6 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private sendRequestService: SendRequestService,
     private router: Router
   ) {
     this.initializeApp();
@@ -76,17 +50,5 @@ export class AppComponent implements OnInit {
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.url.toLowerCase() === path.toLowerCase());
     }
-
-    this.sendRequestService.observeRequestCount({
-      next: value => this.appPages[2].count = value,
-      error: err => {},
-      complete: () => {},
-    });
-
-    this.sendRequestService.observeWaitingRequests({
-      next: value => this.appPages[3].count = value,
-      error: err => {},
-      complete: () => {},
-    });
   }
 }

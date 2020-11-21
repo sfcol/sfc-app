@@ -4,10 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { BoxesPageRoutingModule } from './boxes-routing.module';
-
-import { BoxesPage } from './boxes.page';
 import { ComponentsModule } from '../components/components.module';
+import { CustomersPageRoutingModule } from './customers-routing.module';
 
 @NgModule({
   imports: [
@@ -15,8 +13,8 @@ import { ComponentsModule } from '../components/components.module';
     FormsModule,
     IonicModule,
     ComponentsModule,
-    BoxesPageRoutingModule
+    CustomersPageRoutingModule
   ],
-  declarations: [BoxesPage]
+  declarations: [CustomersPageModule]
 })
 export class CustomersPageModule {}

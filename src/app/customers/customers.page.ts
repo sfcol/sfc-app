@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemReorderEventDetail } from '@ionic/core';
+import { ModalController, ToastController } from '@ionic/angular';
 import { Customer, CustomerService } from '../backend';
+import { SendPage } from '../send/send.page';
+
+declare var navigator: any;
 
 @Component({
   selector: 'app-customers',
@@ -10,21 +13,37 @@ import { Customer, CustomerService } from '../backend';
 export class CustomersPage implements OnInit {
   customers: Customer[];
 
-  constructor(private customerService: CustomerService) { }
-
-  ngOnInit() {
-    this.customerService.getCustomersCustomersGet().subscribe((cust) => this.customers = cust);
+  constructor(private modalCtrl: ModalController, private customerService: CustomerService, private toastController: ToastController) {
   }
 
-  doReorder(ev: CustomEvent<ItemReorderEventDetail>) {
-    // The `from` and `to` properties contain the index of the item
-    // when the drag started and ended, respectively
-    console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
+  ngOnInit() {
+    this.customerService.getCustomersCustomersGet().subscribe(data => this.customers = data);
+  }
 
-    // Finish the reorder and position the item in the DOM based on
-    // where the gesture ended. This method can also be called directly
-    // by the reorder group
-    ev.detail.complete();
+  delete() {
+
+  }
+
+  async send(id: number) {
+    const modal = await this.modalCtrl.create({
+      component: SendPage,
+      componentProps: {
+        id
+      }
+    });
+    modal.onDidDismiss().then(event => {
+      this.toastController.create(event.data).then(toast => toast.present());
+    });
+    return await modal.present();
+  }
+
+  pick() {
+    navigator.contacts.pickContact((contact) => {
+      console.log('The following contact has been selected:' + JSON.stringify(contact));
+      alert(JSON.stringify(contact));
+    }, (err) => {
+      console.log('Error: ' + err);
+    });
   }
 
 }
