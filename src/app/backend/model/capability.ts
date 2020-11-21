@@ -9,18 +9,17 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { SendRequest } from './sendRequest';
+import { ModelsCustomerLeaf } from './modelsCustomerLeaf';
+import { ModelsProductLeaf } from './modelsProductLeaf';
 
 
 /**
- * I accept and will pick it up Receiver -> Backend
+ * A capability means that a farm (a Customer) produces one kind of Product.
  */
-export interface SendResponse { 
-    request: SendRequest;
-    /**
-     * An enumeration.
-     */
-    status: string;
-    pickup_date: string;
+export interface Capability { 
+    id?: string;
+    farm: ModelsCustomerLeaf;
+    product: ModelsProductLeaf;
+    monthly_quantity: number;
 }
 

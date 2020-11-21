@@ -12,17 +12,13 @@
 
 
 /**
- * I want to drop you something off Sender -> Backend -> Receiver
+ * Customer of the App / the SFC
  */
-export interface SendRequest {
-    id: string;
-    sender: string;
-    receiver: string;
-    box: string;
-    /**
-     * An enumeration.
-     */
-    size: string;
-    dropoffDate: string;
+export interface ModelsCustomerLeaf { 
+    id?: string;
+    name: string;
+    address: string;
+    lat?: number | null;
+    lon?: number | null;
 }
 

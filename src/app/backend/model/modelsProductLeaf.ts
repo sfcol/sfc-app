@@ -11,11 +11,13 @@
  */
 
 
-export interface Box { 
-    id: string;
-    label: string;
-    address: string;
-    lat: number;
-    lon: number;
+/**
+ * One product which is supported for a policy like e.g. wheat, meat, ...
+ */
+export interface ModelsProductLeaf { 
+    id?: string;
+    name: string;
+    description: string;
+    image: string;
 }
 

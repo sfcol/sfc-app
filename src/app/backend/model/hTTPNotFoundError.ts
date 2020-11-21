@@ -11,11 +11,7 @@
  */
 
 
-export interface Contact { 
-    id: string;
-    email: string;
-    name: string;
-    picture: string;
-    favorite_boxes: Array<string>;
+export interface HTTPNotFoundError { 
+    detail: string;
 }
 

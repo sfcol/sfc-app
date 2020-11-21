@@ -12,17 +12,12 @@
 
 
 /**
- * You have a DEAL! Backend -> Sender Backend -> Receiver
+ * One product which is supported for a policy like e.g. wheat, meat, ...
  */
-export interface ShipmentConfirmation { 
-    sender: string;
-    receiver: string;
-    box: string;
-    /**
-     * An enumeration.
-     */
-    size: string;
-    dropoff_date: string;
-    pickup_date: string;
+export interface Product { 
+    id?: string;
+    name: string;
+    description: string;
+    image: string;
 }
 
