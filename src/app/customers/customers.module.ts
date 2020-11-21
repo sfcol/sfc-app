@@ -19,4 +19,4 @@ import { ComponentsModule } from '../components/components.module';
   ],
   declarations: [BoxesPage]
 })
-export class BoxesPageModule {}
+export class CustomersPageModule {}

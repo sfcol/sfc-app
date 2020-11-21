@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {ContactService} from '../contact.service';
-import {BoxService} from '../box.service';
+import {CustomerService} from '../box.service';
 import {SendRequestService} from '../send-request.service';
 import {Box} from '../backend';
 import {Contact} from '../backend';
@@ -25,7 +25,7 @@ export class SendPage implements OnInit {
     deliveryDate: string;
 
     constructor(private modalCtrl: ModalController, private contactService: ContactService,
-                private boxService: BoxService, private sendRequestService: SendRequestService) {
+                private boxService: CustomerService, private sendRequestService: SendRequestService) {
     }
 
     ngOnInit() {

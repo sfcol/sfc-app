@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {SendRequestService} from '../send-request.service';
 import {Box, SendRequest} from '../backend';
 import {ContactService} from '../contact.service';
-import { BoxService } from '../box.service';
+import { CustomerService } from '../box.service';
 
 class NamedSendRequest implements SendRequest {
 
@@ -36,7 +36,7 @@ export class ConfirmationsPage {
 
     waitingRequests: Array<NamedSendRequest> = [];
 
-    constructor(private sendRequestService: SendRequestService, private contactService: ContactService, private boxService: BoxService) { }
+    constructor(private sendRequestService: SendRequestService, private contactService: ContactService, private boxService: CustomerService) { }
 
     ionViewDidEnter() {
         this.load();

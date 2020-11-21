@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'boxes',
-    loadChildren: () => import('./boxes/boxes.module').then( m => m.BoxesPageModule)
+    loadChildren: () => import('./customers/customers.module').then( m => m.CustomersPageModule)
   },
   {
     path: 'packets',
