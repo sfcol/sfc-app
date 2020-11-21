@@ -1,8 +1,8 @@
 {
-  "name": "paki-app",
+  "name": "sfc-app",
   "version": "0.0.1",
-  "author": "Smart Packers",
-  "homepage": "https://github.com/paki-the-box/paki-app",
+  "author": "#PragmaticFarmers",
+  "homepage": "https://github.com/sfcol/sfc-app",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -77,7 +77,6 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-qrscanner": {},
-      "cordova-universal-links-plugin": {},
       "cordova-plugin-contacts": {}
     },
     "platforms": []
