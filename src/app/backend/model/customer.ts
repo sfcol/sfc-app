@@ -17,6 +17,7 @@
 export interface Customer { 
     id?: string;
     name: string;
+    image: string;
     address: string;
     lat?: number | null;
     lon?: number | null;

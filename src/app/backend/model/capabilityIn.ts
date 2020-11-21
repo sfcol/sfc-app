@@ -16,7 +16,7 @@
  */
 export interface CapabilityIn { 
     monthly_quantity: number;
-    product_id: string;
     farm_id: string;
+    product_id: string;
 }
 

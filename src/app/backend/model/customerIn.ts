@@ -16,6 +16,7 @@
  */
 export interface CustomerIn { 
     name: string;
+    image: string;
     address: string;
     lat?: number | null;
     lon?: number | null;
